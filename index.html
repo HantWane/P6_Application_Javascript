@@ -1,1 +1,31 @@
-<!DOCTYPE>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poch'Lib</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="myBooks">
+        <h1 class="title">Poch'Lib</h1>
+        <div id="formContainer">
+            <h2 class="h2">Nouveau Livre</h2>
+            <button id="addBookButton">Ajouter un livre</button>
+            <form id="addBookForm" style="display: none;">
+                <input type="text" id="bookTitle" placeholder="Titre du livre" required>
+                <input type="text" id="bookAuthor" placeholder="Auteur" required>
+                <button type="button" id="searchBookButton">Rechercher</button>
+                <button type="button" id="cancelButton">Annuler</button>
+            </form>
+            <div id="searchResults"></div>
+        </div>
+        <hr>
+        <div id="content">
+            <h2>Ma poch'liste</h2>
+            <ul id="books"></ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
