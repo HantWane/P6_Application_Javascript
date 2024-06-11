@@ -8,17 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const bookAuthor = document.getElementById("bookAuthor");
     const searchResults = document.getElementById("searchResults");
 
-    // Afficher les livres enregistrés au chargement de la page
+    // Show saved books on page load
     displayPochList();
 
-    // Afficher le formulaire d'ajout de livre
+    // Show book add form
     addBookButton.addEventListener("click", () => {
         addBookForm.style.display = "block";
         addBookButton.style.display = "none";
         searchResults.innerHTML = "";
     });
 
-    // Gérer la recherche de livres via l'API Google Books
+    // Manage book search via Google Books API
     searchBookButton.addEventListener("click", () => {
         const title = bookTitle.value.trim();
         const author = bookAuthor.value.trim();
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Annuler la recherche et masquer le formulaire
+    // Cancel search and hide form
     cancelButton.addEventListener("click", () => {
         addBookForm.style.display = "none";
         addBookButton.style.display = "block";
@@ -45,7 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (author) query.push(`inauthor:${author}`);
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${query.join('+')}`)
             .then(response => response.json())
-            .then(data => displaySearchResults(data.items))
+            .then(data => {
+                console.log("Search results:", data.items);  // Log for debugging
+                displaySearchResults(data.items);
+            })
             .catch(error => console.error("Error fetching data:", error));
     }
 
@@ -60,13 +63,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 const author = (bookInfo.authors && bookInfo.authors[0]) || "Auteur inconnu";
                 const description = bookInfo.description ? bookInfo.description.substring(0, 200) + "..." : "Information manquante";
                 const thumbnail = bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : "unavailable.png";
+                li.className = "book-item";
                 li.innerHTML = `
                     <img src="${thumbnail}" alt="Book Image">
                     <div>
                         <strong>${title}</strong> par ${author}
                         <p>${description}</p>
+                        <button class="bookmarkButton" data-id="${book.id}" data-title="${title}" data-author="${author}" data-description="${description}" data-thumbnail="${thumbnail}">Ajouter à Poch'Liste</button>
                     </div>
-                    <button class="bookmarkButton" data-id="${book.id}" data-title="${title}" data-author="${author}" data-description="${description}" data-thumbnail="${thumbnail}"></button>
                 `;
                 ul.appendChild(li);
             });
@@ -108,13 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
         bookList.innerHTML = "";
         books.forEach(book => {
             const li = document.createElement("li");
+            li.className = "book-item";
             li.innerHTML = `
                 <img src="${book.thumbnail}" alt="Book Image">
                 <div>
                     <strong>${book.title}</strong> par ${book.author}
                     <p>${book.description}</p>
+                    <button class="removeButton" data-id="${book.id}">Supprimer</button>
                 </div>
-                <button class="removeButton" data-id="${book.id}"></button>
             `;
             bookList.appendChild(li);
         });

@@ -34,6 +34,8 @@ body {
 
 .h2 {
     margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
 }
 
 button {
@@ -56,13 +58,14 @@ button:hover {
     gap: 10px;
     margin-top: 20px;
     width: 100%;
+    align-items: center;
 }
 
 input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: calc(100% - 22px); /* To account for padding */
+    width: calc(100% - 22px); 
     box-sizing: border-box;
 }
 
@@ -107,4 +110,50 @@ input {
 #content h2 {
     margin-top: 30px;
     text-align: center;
+    font-size: 14px;
+
+}
+
+.bookmarkButton {
+    background-color: #007BFF!important;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.bookmarkButton:hover {
+    background-color: #0056b3;
+}
+
+.removeButton {
+    background-color: #DC3545;
+    color: red;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.removeButton:hover {
+    background-color: #c82333;
+}
+
+.book-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.book-item img {
+    margin-right: 20px;
+}
+
+.book-item div {
+    flex: 1;
 }
