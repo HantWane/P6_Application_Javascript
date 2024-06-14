@@ -22,6 +22,7 @@ body {
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto; /* Ajouté pour gérer le dépassement vertical */
 }
 
 .title {
@@ -65,7 +66,7 @@ input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: calc(100% - 22px); 
+    width: calc(100% - 22px);
     box-sizing: border-box;
 }
 
@@ -111,7 +112,6 @@ input {
     margin-top: 30px;
     text-align: center;
     font-size: 14px;
-
 }
 
 .bookmarkButton {
@@ -131,7 +131,7 @@ input {
 
 .removeButton {
     background-color: #DC3545;
-    color: red;
+    color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -152,8 +152,10 @@ input {
 
 .book-item img {
     margin-right: 20px;
+    max-width: 50px;
 }
 
 .book-item div {
     flex: 1;
+    word-wrap: break-word;
 }
