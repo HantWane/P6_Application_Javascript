@@ -55,9 +55,10 @@ export function displayPochList() {
             <div>
                 <strong>${book.title}</strong> par ${book.author}
                 <p>${book.description}</p>
-                <button class="removeButton" data-id="${book.id}">Supprimer</button>
+                <button class="removeButton" data-id="${book.id}"> <i class="fa-solid fa-trash"></i></button>
             </div>
         `;
+        
         bookList.appendChild(li);
     });
 

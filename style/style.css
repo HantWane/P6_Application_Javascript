@@ -114,7 +114,7 @@ body {
   background-color: #0056b3;
 }
 #myBooks .removeButton {
-  background-color: #DC3545;
+  background-color: #DC3545 !important;
   color: white;
   border: none;
   padding: 10px;

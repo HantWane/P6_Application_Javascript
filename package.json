@@ -1,0 +1,15 @@
+{
+  "name": "p6_application_javascript",
+  "version": "1.0.0",
+  "description": "P6 OC Créer une interface utilisateur pour une application",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3"
+  }
+}
