@@ -7,6 +7,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f5f5f5;
+  overflow-x: hidden !important;
 }
 
 #myBooks {
@@ -14,7 +15,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   width: 100%;
-  max-width: 600px;
+  max-width: 1920px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,6 +24,7 @@ body {
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 #myBooks .title {
   background-color: #e9ecef;
@@ -63,10 +65,14 @@ body {
   width: calc(100% - 22px);
   box-sizing: border-box;
 }
+
+
+
 #myBooks #searchResults, #myBooks #content {
   width: 100%;
   margin-top: 20px;
 }
+
 #myBooks #searchResults ul, #myBooks #searchResults #books, #myBooks #content ul, #myBooks #content #books {
   list-style: none;
   padding: 0;
@@ -126,11 +132,20 @@ body {
 #myBooks .removeButton:hover {
   background-color: #c82333;
 }
-#myBooks .book-item {
+
+#myBooks #books {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
+
+#myBooks .book-item {
+    flex-basis: calc(50% - 20px); /* Largeur pour 2 colonnes avec espacement */
+    margin-bottom: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 #myBooks .book-item img {
   margin-right: 20px;
   max-width: 50px;
@@ -150,6 +165,31 @@ body {
 }
 #myBooks #cancelButton:hover {
   background-color: #c82333;
+}
+
+#myBooks #searchResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#myBooks .search-item {
+  flex-basis: calc(50% - 20px); /* Largeur pour 2 colonnes avec espacement */
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+#myBooks .search-item img {
+  margin-right: 20px;
+  max-width: 50px;
+}
+
+#myBooks .search-item div {
+  flex: 1;
+  word-wrap: break-word;
 }
 
 /*# sourceMappingURL=style.css.map */

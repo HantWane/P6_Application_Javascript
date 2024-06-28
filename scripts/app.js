@@ -1,6 +1,5 @@
 import { searchBooks } from './searchBooks.js';
 import { displayPochList } from './display.js';
-import { getPochListFromStorage } from './storage.js';
 
 /**
  * Initializes event listeners and displays the saved book list when the DOM content is loaded.
