@@ -1,195 +1,195 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+.book-item {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
-  overflow-x: hidden !important;
+  margin-bottom: margin-bottom;
+  padding: padding;
+  border: 1px solid secondary-color;
+  border-radius: border-radius;
+  background-color: background-color;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.book-item img {
+  width: 100px;
+  height: auto;
+  margin-right: 1rem;
+}
+.book-item div {
+  flex-grow: 1;
+}
+.book-item strong {
+  display: block;
+  font-size: 1.2rem;
+}
+.book-item p {
+  margin: 0.5rem 0;
 }
 
-#myBooks {
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  width: 100%;
-  max-width: 1920px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: hidden;
+body {
+  font-family: "Roboto", sans-serif;
 }
+
 #myBooks .title {
-  background-color: #e9ecef;
-  padding: 10px;
-  border-radius: 4px;
-  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+}
+#myBooks #formContainer {
+  margin: 2rem 0;
+  text-align: center;
+  align-items: center;
+}
+#myBooks #formContainer .h2 {
+  margin-bottom: 1rem;
   text-align: center;
 }
-#myBooks .h2 {
-  margin-top: 20px;
-  font-size: 14px;
-  text-align: center;
-}
-#myBooks button {
-  background-color: #5cb85c;
+#myBooks #formContainer #addBookButton {
+  margin-bottom: 1rem;
+  background-color: #28a745;
   color: white;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
   cursor: pointer;
-  margin: 10px 0;
 }
-#myBooks button:hover {
-  background-color: #4cae4c;
+#myBooks #formContainer #addBookButton:hover {
+  background-color: #1e7e34;
 }
-#myBooks #addBookForm {
+#myBooks #formContainer #addBookForm {
+  display: none;
+}
+#myBooks #formContainer #addBookForm.active {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-  width: 100%;
   align-items: center;
 }
-#myBooks #addBookForm input {
-  padding: 10px;
+#myBooks #formContainer #addBookForm input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: calc(100% - 22px);
-  box-sizing: border-box;
-}
-
-
-
-#myBooks #searchResults, #myBooks #content {
   width: 100%;
-  margin-top: 20px;
+  max-width: 400px;
 }
-
-#myBooks #searchResults ul, #myBooks #searchResults #books, #myBooks #content ul, #myBooks #content #books {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-}
-#myBooks #searchResults li, #myBooks #content li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-#myBooks #searchResults li img, #myBooks #content li img {
-  width: 50px;
-  height: 75px;
-  object-fit: cover;
-  margin-right: 10px;
-}
-#myBooks #searchResults li div, #myBooks #content li div {
-  flex-grow: 1;
-  text-align: left;
-}
-#myBooks #searchResults li button, #myBooks #content li button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-#myBooks #searchResults h2, #myBooks #content h2 {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 14px;
-}
-#myBooks .bookmarkButton {
-  background-color: #007BFF !important;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  display: inline-block;
-  border-radius: 5px;
-}
-#myBooks .bookmarkButton:hover {
-  background-color: #0056b3;
-}
-#myBooks .removeButton {
-  background-color: #DC3545 !important;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  display: inline-block;
-  border-radius: 5px;
-}
-#myBooks .removeButton:hover {
-  background-color: #c82333;
-}
-
-#myBooks #books {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-#myBooks .book-item {
-    flex-basis: calc(50% - 20px); /* Largeur pour 2 colonnes avec espacement */
-    margin-bottom: 20px;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-#myBooks .book-item img {
-  margin-right: 20px;
-  max-width: 50px;
-}
-#myBooks .book-item div {
-  flex: 1;
-  word-wrap: break-word;
-}
-#myBooks #cancelButton {
-  background-color: #DC3545;
-  color: white;
+#myBooks #formContainer #addBookForm button {
+  padding: 0.5rem;
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
   cursor: pointer;
-  margin: 10px 0;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 200px;
 }
-#myBooks #cancelButton:hover {
-  background-color: #c82333;
+#myBooks #formContainer #addBookForm #searchBookButton {
+  background-color: #28a745;
+  color: white;
 }
-
-#myBooks #searchResults {
+#myBooks #formContainer #addBookForm #cancelButton {
+  background-color: #dc3545;
+  color: white;
+}
+#myBooks #formContainer #searchResults .flex-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 1rem;
 }
-
-#myBooks .search-item {
-  flex-basis: calc(50% - 20px); /* Largeur pour 2 colonnes avec espacement */
-  margin-bottom: 20px;
-  padding: 10px;
-  box-sizing: border-box;
+#myBooks #formContainer #searchResults ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#myBooks #formContainer #searchResults ul .book-item {
+  flex: 1 1 calc(50% - 1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#myBooks #formContainer #searchResults ul .book-item .book-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#myBooks #formContainer #searchResults ul .book-item .book-info .text {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+#myBooks #formContainer #searchResults ul .book-item .book-info img {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+#myBooks #formContainer #searchResults .bookmarkButton {
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  max-width: 200px;
+}
+#myBooks #content h2 {
+  text-align: center;
+}
+#myBooks #content #books {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#myBooks #content #books .book-item {
+  flex: 1 1 calc(50% - 1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#myBooks #content #books .book-info {
+  display: felx;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#myBooks #content #books .book-info .text {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+#myBooks #content #books .book-info img {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+#myBooks #content #books .removeButton {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+#myBooks #content #books .removeButton i {
+  margin-right: 0.5rem;
 }
 
-#myBooks .search-item img {
-  margin-right: 20px;
-  max-width: 50px;
-}
-
-#myBooks .search-item div {
-  flex: 1;
-  word-wrap: break-word;
+@media (max-width: 768px) {
+  #searchResults .flex-container, #searchResults ul {
+    flex-direction: column;
+  }
+  #searchResults .flex-container .book-item, #searchResults ul .book-item {
+    flex: 1 1 100%;
+  }
+  #content #books {
+    flex-direction: column;
+  }
+  #content #books .book-item {
+    flex: 1 1 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,30 @@
+.book-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: margin-bottom;
+    padding: padding;
+    border: 1px solid secondary-color;
+    border-radius: border-radius;
+    background-color: background-color;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    img {
+        width: 100px;
+        height: auto;
+        margin-right: 1rem;
+    }
+
+    div {
+        flex-grow: 1;
+    }
+
+    strong {
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    p {
+        margin: 0.5rem 0;
+    }
+}

@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * Event handler for displaying the book add form.
      */
     addBookButton.addEventListener("click", () => {
+        
         addBookForm.style.display = "block";
         addBookButton.style.display = "none";
         document.getElementById("searchResults").innerHTML = "";
