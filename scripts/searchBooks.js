@@ -20,7 +20,6 @@ function constructQuery(title, author) {
  * @param {Object} data - The data returned from the API.
  */
 function handleResponse(data) {
-    console.log("Search results:", data.items);  
     displaySearchResults(data.items);
 }
 
