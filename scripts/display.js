@@ -10,22 +10,67 @@ function createBookElement(book) {
     const li = document.createElement("li");
     const bookInfo = book.volumeInfo;
     const id = book.id;
-    const title = bookInfo.title || "Unknown Title";
-    const author = (bookInfo.authors && bookInfo.authors[0]) || "Unknown Author";
-    const description = bookInfo.description ? bookInfo.description.substring(0, 200) + "..." : "Information missing";
+    const title = bookInfo.title || "Titre inconnu";
+    const author = (bookInfo.authors && bookInfo.authors[0]) || "Auteur inconnu";
+    const description = bookInfo.description ? bookInfo.description.substring(0, 200) + "..." : "Information manquante";
     const thumbnail = bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : "images/unavailable.png";
 
     li.className = "book-item";
-    li.innerHTML = `
-        <img src="${thumbnail}" alt="Book Image">
-        <div class="text">
-            <strong>${title}</strong> by ${author}
-            <p>${description}</p>
-            <button class="bookmarkButton" data-id="${id}" data-title="${title}" data-author="${author}" data-description="${description}" data-thumbnail="${thumbnail}">Add to Poch'List</button>
-        </div>
-    `;
+
+    const img = document.createElement("img");
+    img.src = thumbnail;
+    img.alt = "Book Image";
+
+    const bookmark = document.createElement("div");
+    bookmark.className = "bookmark";
+    const bookmarkIcon = document.createElement("i");
+    bookmarkIcon.className = "fa-solid fa-bookmark";
+    bookmark.appendChild(bookmarkIcon);
+    li.appendChild(bookmark);
+
+    const div = document.createElement("div");
+    div.className = "text";
+
+
+    const strong = document.createElement("strong");
+    strong.textContent = title;
+
+    const authorText = document.createTextNode(` by ${author}`);
+
+    const idElement = document.createElement("p");
+    idElement.className = "book-id";
+    idElement.textContent = `ID: ${id}`;
+
+    const p = document.createElement("p");
+    p.textContent = description;
+
+    const button = document.createElement("button");
+    button.className = "bookmarkButton";
+    button.dataset.id = id;
+    button.dataset.title = title;
+    button.dataset.author = author;
+    button.dataset.description = description;
+    button.dataset.thumbnail = thumbnail;
+    
+    
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className = "button-container";
+    buttonContainer.appendChild(button);
+
+    // Add elements
+    div.appendChild(strong);
+    div.appendChild(authorText);
+    div.appendChild(idElement);
+    div.appendChild(p);
+
+    li.appendChild(div);
+    li.appendChild(img);
+    li.appendChild(buttonContainer);
+
     return li;
 }
+
 
 /**
  * Displays the search results in the DOM.
@@ -34,22 +79,25 @@ function createBookElement(book) {
  */
 export function displaySearchResults(books) {
     const searchResults = document.getElementById("searchResults");
-    searchResults.innerHTML = "<h2>Search Results</h2>";
+    searchResults.innerHTML = "<h2>Résultats de recherche</h2>";
 
     if (books && books.length > 0) {
-        const ul = document.createElement("ul");
+        const resultBoxGrid = document.createElement("div");
+        resultBoxGrid.className = "result-box-grid js-result-box-grid";
+
         books.forEach(book => {
             const bookElement = createBookElement(book);
-            ul.appendChild(bookElement);
+            resultBoxGrid.appendChild(bookElement);
         });
-        searchResults.appendChild(ul);
+
+        searchResults.appendChild(resultBoxGrid);
         
-        // Add event listeners after adding elements to the DOM
+        // Ajouter des écouteurs d'événements après avoir ajouté les éléments au DOM
         document.querySelectorAll(".bookmarkButton").forEach(button => {
             button.addEventListener("click", addToPochList);
         });
     } else {
-        searchResults.innerHTML += "<p>No books were found.</p>";
+        searchResults.innerHTML += "<p>Aucun livre n'a été trouvé</p>";
     }
 }
 
@@ -59,22 +107,47 @@ export function displaySearchResults(books) {
 export function displayPochList() {
     const books = getPochListFromStorage();
     const bookList = document.getElementById("books");
-    bookList.innerHTML = "";
+    bookList.innerHTML = ""; // Vider la liste existante
+
     books.forEach(book => {
         const li = document.createElement("li");
         li.className = "book-item";
-        li.innerHTML = `
-            <img src="${book.thumbnail}" alt="Book Image">
-            <div>
-                <strong>${book.title}</strong> by ${book.author}
-                <p>${book.description}</p>
-                <button class="removeButton" data-id="${book.id}"> <i class="fa-solid fa-trash"></i></button>
-            </div>
-        `;
-        
+
+        const img = document.createElement("img");
+        img.src = book.thumbnail;
+        img.alt = "Book Image";
+
+        const div = document.createElement("div");
+
+        const strong = document.createElement("strong");
+        strong.textContent = book.title;
+
+        const authorText = document.createTextNode(` by ${book.author}`);
+
+        const p = document.createElement("p");
+        p.textContent = book.description;
+
+        const button = document.createElement("button");
+        button.className = "removeButton";
+        button.dataset.id = book.id;
+
+        const icon = document.createElement("i");
+        icon.className = "fa-solid fa-trash";
+        button.appendChild(icon);
+
+        // Assembler les éléments
+        div.appendChild(strong);
+        div.appendChild(authorText);
+        div.appendChild(p);
+        div.appendChild(button);
+
+        li.appendChild(img);
+        li.appendChild(div);
+
         bookList.appendChild(li);
     });
 
+    // Ajouter les gestionnaires d'événements pour les boutons de suppression
     document.querySelectorAll(".removeButton").forEach(button => {
         button.addEventListener("click", removeFromPochList);
     });
@@ -96,7 +169,7 @@ export function getPochListFromStorage() {
  * @param {Event} event - The click event object.
  */
 export function removeFromPochList(event) {
-    const button = event.target.closest('button'); // Ensure the correct button is selected
+    const button = event.target.closest('button'); 
     const id = button.getAttribute("data-id");
     let pochList = getPochListFromStorage();
     pochList = pochList.filter(book => book.id !== id);

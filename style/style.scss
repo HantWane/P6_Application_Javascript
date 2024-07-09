@@ -1,206 +1,230 @@
-@import 'variables';
-@import 'mixins.scss';
-@import 'book-item';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+$black: rgba(0,0,0, 0.7);
+$white: #eff0f4;
+$grey: #e0e0e0;
+$green: #469388;
+$red: #df5a4b;
+$font-family: 'Roboto', sans-serif;
 
+@mixin icon {
+  height: 25px;
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
 
-// Page Style
 body {
   font-family: $font-family;
+  margin: 30px;
+  @media all and (max-width: 750px) {
+    margin: 15px;
+  }
+}
+
+hr {
+  border-top: solid 1px #ccc !important;
+  border: none; 
+  border-bottom: solid 1px #ccc;
+  border-radius: 10px;
+  margin: 30px;
+}
+
+.title {
+  text-align: center;
+  color: $black;
+  font-weight: normal;
+}
+
+.h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 #myBooks {
-    .title {
-        text-align: center;
-        margin: 1rem 0;
-    }
-
-    #formContainer {
-        margin: 2rem 0;
-        text-align: center;
-        align-items: center;
-
-        .h2 {
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        #addBookButton {
-            margin-bottom: 1rem;
-            @include button-styles($search-button-color, white);
-            
-        }
-
-        #addBookForm {
-            display: none;
-
-            &.active {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            }
-
-            input {
-                margin-bottom: 1rem;
-                padding: 0.5rem;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                width: 100%;
-                max-width: 400px;
-            }
-
-            button {
-                padding: 0.5rem;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                margin-top: 0.5rem;
-                width: 100%;
-                max-width: 200px;
-            }
-
-            #searchBookButton {
-                background-color: $search-button-color;
-                color: white;
-            }
-
-            #cancelButton {
-                background-color: $cancel-button-color;
-                color: white;
-            }
-        }
-
-        #searchResults {
-            .flex-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            ul {
-                list-style-type: none;
-                padding: 0;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1rem;
-
-                .book-item {
-                  flex: 1 1 calc(50% - 1rem);
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  margin-bottom: 1rem;
-  
-                  .book-info {
-                      display: flex;
-                      flex-direction: column;
-                      align-items: center;
-                      text-align: center;
-  
-                      .text {
-                          margin-top: 1rem;
-                          margin-bottom: 1rem;
-                      }
-                  }
-  
-                  .book-info img {
-                      width: 100px;
-                      margin-bottom: 1rem;
-                  }
-                }
-                
-            }
-
-
-            .bookmarkButton {
-              background-color: $add-to-pochlist-button-color;
-              color: white;
-              border-radius: 4px;
-              border: none;
-              cursor: pointer;
-              padding: 0.5rem;
-              margin-top: 1rem;
-              max-width: 200px;
-            }
-        }
-    }
-
-    #content {
-        h2 {
-            text-align: center;
-          
-        }
-
-        #books {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-
-            .book-item {
-                flex: 1 1 calc(50% - 1rem);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 1rem;
-            }
-
-            .book-info {
-              display: felx;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-
-              .text {
-                margin-top: 1rem;
-                margin-bottom: 1rem;
-              }
-            }
-
-            .book-info img {
-              width: 100px;
-              margin-bottom: 1rem;
-            }
-
-            .removeButton {
-              background-color: $trash-button-color;
-              color: white;
-              padding: 0.5rem;
-              border: none;
-              border-radius: 4px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              i {
-                  margin-right: 0.5rem;
-              }
-            }
-        }
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.4);
+  padding: 20px;
 }
 
-// Media Queries
-@media (max-width: 768px) {
-  #searchResults {
-      .flex-container, ul {
-          flex-direction: column;
+#formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-          .book-item {
-              flex: 1 1 100%;
-          }
-      }
+form {
+  display: flex !important;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+
+  input {
+    width: 95%;
+    max-width: 100%;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 10px;
+    margin: 10px 0;
   }
 
-  #content {
-      #books {
-          flex-direction: column;
+  .buttons-box {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 
-          .book-item {
-              flex: 1 1 100%;
-          }
+    width: 80%;
+    max-width: 400px;
+
+    button {
+      font-family: $font-family;
+      font-size: 16px;
+      font-weight: 300;
+      border: none;
+      border-radius: 3px;
+      color: $white;
+      cursor: pointer;
+      width: 48%;
+      padding: 10px;
+
+      &.button--green {
+        background-color: $green;
+        margin-bottom: 10px;
       }
+
+      &.button--red {
+        background-color: $red;
+      }
+    }
+  }
+}
+
+.result-box-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 50px;
+
+  @media all and (max-width: 750px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.bookmark{
+    position: absolute;
+    right: 10px;
+}
+
+.result-box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: $grey;
+  border: solid 1px;
+  border-radius: 3px;
+  padding: 5px 30px;
+
+  .fa-bookmark {
+    color: $green;
+    @include icon;
+    position:absolute; 
+    right: 10px;
+  }
+
+  .box-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+    padding-right: 20px;
+  }
+
+  .box-id {
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .box-description {
+    font-size: 15px;
+    margin-bottom: 0;
+  }
+
+  .box-author {
+    margin-bottom: 0;
+  }
+
+  .cover {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+
+    img {
+      max-height: 250px;
+      object-fit: contain;
+    }
+  }
+}
+
+#error-message {
+  display: block;
+  text-align: center;
+  color: $red;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border: solid 1px $grey;
+  border-radius: 3px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+
+  img {
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+
+  .text {
+    margin-bottom: 20px;
+
+    strong {
+      font-size: 18px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+
+    .bookmarkButton {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      
+
+      .svg-inline--fa {
+        height: 25px;
+        display: block;
+        fill: $green;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    }
   }
 }

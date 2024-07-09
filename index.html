@@ -16,17 +16,21 @@
             <form id="addBookForm" style="display: none;">
                 <input type="text" id="bookTitle" placeholder="Titre du livre" required>
                 <input type="text" id="bookAuthor" placeholder="Auteur" required>
-                <button type="button" id="searchBookButton">Rechercher</button>
-                <button type="button" id="cancelButton">Annuler</button>
+                <div class="buttons-box">
+                    <button type="button" class="button--green" id="searchBookButton">Rechercher</button>
+                    <button type="button" class="button--red" id="cancelButton">Annuler</button>
+                </div>
             </form>
+            <hr>
             <div id="searchResults" class="flex-container"></div>
         </div>
         <hr>
         <div id="content">
-            <h2>Ma poch'liste</h2>
+            <h2 class="sub-title">Ma poch'liste</h2>
             <ul id="books"></ul>
         </div>
     </div>
     <script type="module" src="scripts/app.js"></script>
 </body>
+
 </html>
