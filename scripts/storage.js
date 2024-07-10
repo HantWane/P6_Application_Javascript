@@ -4,7 +4,6 @@ export function addToPochList(event) {
     const button = event.target.closest('button');
     if (!button) {
         console.error('L\'élément bouton est introuvable.');
-        console.log('Élément cliqué:', event.target);
         return;
     }
     const id = button.getAttribute("data-id");
@@ -28,7 +27,6 @@ export function addToPochList(event) {
     pochList.push({ id, title, author, description, thumbnail });
     sessionStorage.setItem("pochList", JSON.stringify(pochList));
     displayPochList();
-    console.log('Livre ajouté à la poch list:', { id, title, author, description, thumbnail });
 }
 
 export function removeFromPochList(event) {

@@ -18,7 +18,6 @@ function createBookElement(book) {
     const bookmark = document.createElement("div");
     bookmark.className = "bookmark";
     bookmark.addEventListener("click", function(event) {
-        console.log("Bookmark clicked");
         event.stopPropagation();
         addToPochList(event);
     });
@@ -89,7 +88,7 @@ export function displaySearchResults(books) {
 export function displayPochList() {
     const books = getPochListFromStorage();
     const bookList = document.getElementById("books");
-    bookList.innerHTML = ""; // Vider la liste existante
+    bookList.innerHTML = ""; // empty existing list
 
     books.forEach(book => {
         const li = document.createElement("li");
@@ -117,7 +116,7 @@ export function displayPochList() {
         icon.className = "fa-solid fa-trash trash-icon";
         button.appendChild(icon);
 
-        // Assembler les éléments
+        // Add éléments
         div.appendChild(strong);
         div.appendChild(authorText);
         div.appendChild(p);
