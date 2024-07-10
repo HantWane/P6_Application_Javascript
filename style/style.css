@@ -98,6 +98,8 @@ form .buttons-box button.button--red {
 .bookmark {
   position: absolute;
   right: 10px;
+  color: #469388;
+  cursor: pointer;
 }
 
 .result-box {
