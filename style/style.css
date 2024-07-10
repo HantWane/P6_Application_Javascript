@@ -201,5 +201,17 @@ form .buttons-box button.button--red {
   top: 10px;
   right: 10px;
 }
+.book-item .removeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 40px;
+}
+.book-item .removeButton i.fa-trash {
+  color: #df5a4b;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -114,7 +114,7 @@ export function displayPochList() {
         button.dataset.id = book.id;
 
         const icon = document.createElement("i");
-        icon.className = "fa-solid fa-trash";
+        icon.className = "fa-solid fa-trash trash-icon";
         button.appendChild(icon);
 
         // Assembler les éléments
