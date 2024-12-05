@@ -1,0 +1,58 @@
+.book-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: padding;
+    border: 1px solid secondary-color;
+    border-radius: border-radius;
+    background-color: background-color;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    width: 250px;
+
+    img {
+        width: 100px;
+        height: auto;
+        margin-right: 1rem;
+    }
+
+    div {
+        flex-grow: 1;
+    }
+
+    strong {
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    p {
+        margin: 0.5rem 0;
+    }
+
+    .book-item .book-id,
+    .book-item p {
+        margin: 0.5rem 0;
+    }
+
+    .book-item .book-thumbnail {
+        width: 100px;
+        height: auto;
+        margin-top: 10px;
+        align-self: center; /* Centrer l'image en bas */
+    }
+
+    .button-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .bookmarkButton {
+        padding: 5px 10px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+}
